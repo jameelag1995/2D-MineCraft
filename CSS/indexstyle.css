@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    background: url("../img/background/minecraft-cloudy-sunrise-nature-xpc7uzwsfbga70xp.webp")
+        no-repeat center center/cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+}
+header{
+    background: url('../img/background/Minecraft_text.png') no-repeat center center/cover;
+    width: 600px;
+    height: 100px;
+}
+
+.rules{
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 600px;
+    padding-left: 20px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+ul{
+    list-style-type: square;
+}
+li{
+    padding: 10px 0;
+}
+button{
+    width: 400px;
+    height: 100px;
+    font-size: 30px;
+    font-weight: bolder;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 10px 10px 10px black;
+    background-color: darkolivegreen;
+    cursor: pointer;
+    text-shadow: 4px 4px 2px black;
+    color: #fff;
+    transition: all 0.5s ease-in-out;
+}
+button:hover{
+    background-color: rgb(59, 75, 33);
+}
