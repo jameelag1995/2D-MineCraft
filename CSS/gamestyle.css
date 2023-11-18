@@ -14,28 +14,27 @@ body{
 }
 #game-container{
     background-color: #fff;
-    width: 80%;
-    height: 80%;
+    min-width: 1400px;
+    height: 800px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
 }
 #game-options{
-    width: 10%;
+    width: 200px;
     height: 100%;
     background-color: #333;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-wrap: nowrap;
     gap: 25px;
 }
 .tool{
-    width: 150px;
-    height: 150px;
-    background-color: #fff;
+    width: 110px;
+    height: 110px;
     padding: 20px 10px;
 
 }
@@ -43,6 +42,7 @@ body{
     border: #fff 1px solid;
     cursor: pointer;
 }
+
 .pickaxe{
     background: url('../img/items/pickaxe.png') no-repeat center center/cover;
 }
@@ -53,17 +53,64 @@ body{
     background: url('../img/items/shovel.png') no-repeat center center/cover;
 }
 .last-picked{
-    border: darkred 3px solid;
+    border: lightslategray 3px solid;
+    width: 80px;
+    height: 80px;
+    background-color: #333;
 }
 .reset-game{
-    width: 110px;
-    height: 80px;
+    width: 80px;
+    height: 40px;
     background-color: lightsalmon;
-    text-align: center;
-    
+    border-radius: 5px;
+    border: none;
+}
+.reset-game:hover{
+    background-color: rgb(206, 128, 98);
+    cursor: pointer;
 }
 #game-world{
-    width: 90%;
+    width: 1200px;
     height: 100%;
+}
+.row{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.cell{
+    width: 80px;
+    height: 80px;
+}
+.cell:hover{
+    border: 1px #fff solid;
+}
+
+.sky{
     background-color: #6495ed;
+}
+.grass{
+    background: url('../img/Tiles/Grass.PNG') no-repeat center center/cover;
+}
+.gold{
+    background: url('../img/Tiles/Gold.PNG') no-repeat center center/cover;
+}
+.dirt{
+    background: url('../img/Tiles/Dirt.PNG') no-repeat center center/cover;
+}
+.wood{
+    background: url('../img/Tiles/Wood.PNG') no-repeat center center/cover;
+}
+.leaves{
+    background: url('../img/Tiles/Leaves.PNG') no-repeat center center/cover;
+}
+.stone{
+    background: url('../img/Tiles/stone.PNG') no-repeat center center/cover;
+}
+
+
+.currtool{
+    border: lightgreen 1px solid;
 }
