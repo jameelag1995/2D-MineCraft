@@ -52,12 +52,12 @@ const addCell = () => {
 CreateWorld();
 
 /* -------------------------------------------------------------------------- */
-/*                             Creat Tools Events                             */
+/*                             Create Tools Events                            */
 /* -------------------------------------------------------------------------- */
 const pickaxe = document.querySelector(".pickaxe");
 const axe = document.querySelector(".axe");
 const shovel = document.querySelector(".shovel");
-let currTool;
+let currTool = 
 pickaxe.addEventListener("click", (e) => {
     if (currTool != undefined) {
         currTool.classList.remove("currtool");
@@ -66,6 +66,7 @@ pickaxe.addEventListener("click", (e) => {
     currTool.classList.add("currtool");
 });
 pickaxe.click();
+
 axe.addEventListener("click", (e) => {
     if (currTool != undefined) {
         currTool.classList.remove("currtool");
@@ -73,6 +74,7 @@ axe.addEventListener("click", (e) => {
     currTool = axe;
     currTool.classList.add("currtool");
 });
+
 shovel.addEventListener("click", (e) => {
     if (currTool != undefined) {
         currTool.classList.remove("currtool");
@@ -85,13 +87,14 @@ shovel.addEventListener("click", (e) => {
 /*              Rendering Tiles functionality & last picked item              */
 /* -------------------------------------------------------------------------- */
 let lastPickedItem = document.querySelector(".last-picked");
-const tiles = document.querySelectorAll(".cell");
 function renderTiles() {
+    const tiles = document.querySelectorAll(".cell");
     tiles.forEach((tile) => {
         // console.log(tile.classList[tile.classList.length - 1]);
         checkTile(tile);
     });
 }
+/* --------------------------- First tiles render --------------------------- */
 renderTiles();
 
 function checkTile(tile) {
@@ -124,11 +127,9 @@ function removeTile(tile) {
             `${lastPickedItem.classList[lastPickedItem.classList.length - 1]}`
         );
     }
-
     lastPickedItem.classList.add(
         `${tile.classList[tile.classList.length - 1]}`
     );
-    console.log(lastPickedItem.classList);
     tile.classList.remove(`${tile.classList[tile.classList.length - 1]}`);
     tile.classList.add("sky");
 }
@@ -138,18 +139,26 @@ function removeTile(tile) {
 /* -------------------------------------------------------------------------- */
 
 lastPickedItem.addEventListener("click", (e) => {
-    if (lastPickedItem.classList.length > 1) {
-        if (currTool != undefined) {
+    // if (lastPickedItem.classList.length > 1) {
+        if (currTool != undefined && currTool !== lastPickedItem) {
             currTool.classList.remove("currtool");
         }
         currTool = lastPickedItem;
         currTool.classList.add("currtool");
-        const emptyTiles = document.querySelectorAll(".sky");
-        
+        const emptyTiles = document.querySelectorAll(".cell");
         emptyTiles.forEach((emptyTile) => {
             emptyTile.addEventListener("click", (e) => {
-                renderTiles();
-                if (lastPickedItem.classList.length > 1) {
+                
+                if (
+                    lastPickedItem.classList.length > 1 &&
+                    !emptyTile.classList.contains(
+                        `${
+                            lastPickedItem.classList[
+                                lastPickedItem.classList.length - 1
+                            ]
+                        }` 
+                    )
+                ) {
                     emptyTile.classList.add(
                         `${
                             lastPickedItem.classList[
@@ -165,11 +174,9 @@ lastPickedItem.addEventListener("click", (e) => {
                             ]
                         }`
                     );
+                    renderTiles();
                 }
-
-                console.log(lastPickedItem.classList);
-                
             });
         });
-    }
+    // }
 });
