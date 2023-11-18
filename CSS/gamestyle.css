@@ -109,6 +109,9 @@ body{
 .stone{
     background: url('../img/Tiles/stone.PNG') no-repeat center center/cover;
 }
+.cloud{
+    background-color: #fff;
+}
 
 
 .currtool{
