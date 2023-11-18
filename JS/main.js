@@ -145,7 +145,7 @@ lastPickedItem.addEventListener("click", (e) => {
         }
         currTool = lastPickedItem;
         currTool.classList.add("currtool");
-        const emptyTiles = document.querySelectorAll(".cell");
+        const emptyTiles = document.querySelectorAll(".sky");
         emptyTiles.forEach((emptyTile) => {
             emptyTile.addEventListener("click", (e) => {
                 
