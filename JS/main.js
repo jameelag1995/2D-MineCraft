@@ -98,27 +98,30 @@ function renderTiles() {
 renderTiles();
 
 function checkTile(tile) {
-    tile.addEventListener("click", (e) => {
-        if (
-            currTool.classList.contains("pickaxe") &&
-            (tile.classList.contains("gold") ||
-                tile.classList.contains("stone"))
-        ) {
-            removeTile(tile);
-        } else if (
-            currTool.classList.contains("axe") &&
-            (tile.classList.contains("wood") ||
-                tile.classList.contains("leaves"))
-        ) {
-            removeTile(tile);
-        } else if (
-            currTool.classList.contains("shovel") &&
-            (tile.classList.contains("grass") ||
-                tile.classList.contains("dirt"))
-        ) {
-            removeTile(tile);
-        }
-    });
+    if(!tile.classList.contains('sky')){
+
+        tile.addEventListener("click", (e) => {
+            if (
+                currTool.classList.contains("pickaxe") &&
+                (tile.classList.contains("gold") ||
+                    tile.classList.contains("stone"))
+            ) {
+                removeTile(tile);
+            } else if (
+                currTool.classList.contains("axe") &&
+                (tile.classList.contains("wood") ||
+                    tile.classList.contains("leaves"))
+            ) {
+                removeTile(tile);
+            } else if (
+                currTool.classList.contains("shovel") &&
+                (tile.classList.contains("grass") ||
+                    tile.classList.contains("dirt"))
+            ) {
+                removeTile(tile);
+            }
+        });
+    }
 }
 
 function removeTile(tile) {
@@ -150,7 +153,7 @@ lastPickedItem.addEventListener("click", (e) => {
             emptyTile.addEventListener("click", (e) => {
                 
                 if (
-                    lastPickedItem.classList.length > 1 &&
+                    lastPickedItem.classList.length > 2 &&
                     !emptyTile.classList.contains(
                         `${
                             lastPickedItem.classList[
@@ -162,15 +165,23 @@ lastPickedItem.addEventListener("click", (e) => {
                     emptyTile.classList.add(
                         `${
                             lastPickedItem.classList[
+                                lastPickedItem.classList.length - 2
+                            ]
+                        }`
+                    );
+                    console.log(
+                        `${
+                            lastPickedItem.classList[
                                 lastPickedItem.classList.length - 1
                             ]
                         }`
                     );
                     emptyTile.classList.remove("currtool");
+                    emptyTile.classList.remove("sky")
                     lastPickedItem.classList.remove(
                         `${
                             lastPickedItem.classList[
-                                lastPickedItem.classList.length - 1
+                                lastPickedItem.classList.length - 2
                             ]
                         }`
                     );
