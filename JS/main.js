@@ -57,8 +57,7 @@ CreateWorld();
 const pickaxe = document.querySelector(".pickaxe");
 const axe = document.querySelector(".axe");
 const shovel = document.querySelector(".shovel");
-let currTool = 
-pickaxe.addEventListener("click", (e) => {
+let currTool = pickaxe.addEventListener("click", (e) => {
     if (currTool != undefined) {
         currTool.classList.remove("currtool");
     }
@@ -90,7 +89,6 @@ let lastPickedItem = document.querySelector(".last-picked");
 function renderTiles() {
     const tiles = document.querySelectorAll(".cell");
     tiles.forEach((tile) => {
-        // console.log(tile.classList[tile.classList.length - 1]);
         checkTile(tile);
     });
 }
@@ -98,8 +96,7 @@ function renderTiles() {
 renderTiles();
 
 function checkTile(tile) {
-    if(!tile.classList.contains('sky')){
-
+    if (!tile.classList.contains("sky")) {
         tile.addEventListener("click", (e) => {
             if (
                 currTool.classList.contains("pickaxe") &&
@@ -143,51 +140,44 @@ function removeTile(tile) {
 
 lastPickedItem.addEventListener("click", (e) => {
     // if (lastPickedItem.classList.length > 1) {
-        if (currTool != undefined && currTool !== lastPickedItem) {
-            currTool.classList.remove("currtool");
-        }
-        currTool = lastPickedItem;
-        currTool.classList.add("currtool");
-        const emptyTiles = document.querySelectorAll(".sky");
-        emptyTiles.forEach((emptyTile) => {
-            emptyTile.addEventListener("click", (e) => {
-                
-                if (
-                    lastPickedItem.classList.length > 2 &&
-                    !emptyTile.classList.contains(
-                        `${
-                            lastPickedItem.classList[
-                                lastPickedItem.classList.length - 1
-                            ]
-                        }` 
-                    )
-                ) {
-                    emptyTile.classList.add(
-                        `${
-                            lastPickedItem.classList[
-                                lastPickedItem.classList.length - 2
-                            ]
-                        }`
-                    );
-                    console.log(
-                        `${
-                            lastPickedItem.classList[
-                                lastPickedItem.classList.length - 1
-                            ]
-                        }`
-                    );
-                    emptyTile.classList.remove("currtool");
-                    emptyTile.classList.remove("sky")
-                    lastPickedItem.classList.remove(
-                        `${
-                            lastPickedItem.classList[
-                                lastPickedItem.classList.length - 2
-                            ]
-                        }`
-                    );
-                    renderTiles();
-                }
-            });
+    if (currTool != undefined && currTool !== lastPickedItem) {
+        currTool.classList.remove("currtool");
+    }
+    currTool = lastPickedItem;
+    currTool.classList.add("currtool");
+    const emptyTiles = document.querySelectorAll(".sky");
+    emptyTiles.forEach((emptyTile) => {
+        emptyTile.addEventListener("click", (e) => {
+            if (
+                lastPickedItem.classList.length > 2 &&
+                !emptyTile.classList.contains(
+                    `${
+                        lastPickedItem.classList[
+                            lastPickedItem.classList.length - 1
+                        ]
+                    }`
+                )
+            ) {
+                emptyTile.classList.add(
+                    `${
+                        lastPickedItem.classList[
+                            lastPickedItem.classList.length - 2
+                        ]
+                    }`
+                );
+
+                emptyTile.classList.remove("currtool");
+                emptyTile.classList.remove("sky");
+                lastPickedItem.classList.remove(
+                    `${
+                        lastPickedItem.classList[
+                            lastPickedItem.classList.length - 2
+                        ]
+                    }`
+                );
+                renderTiles();
+            }
         });
+    });
     // }
 });
